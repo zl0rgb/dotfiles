@@ -1,0 +1,13 @@
+./a.sh
+/$HOME/.dotfiles/dynamicwall.sh &
+picom --config .config/picom/picom.conf &
+pa-applet &
+blueman-applet &
+/usr/bin/lxqt-policykit-agent &
+xmodmap -e "pointer = 3 2 1 " &
+
+# Statusbar loop
+while true; do
+   xsetroot -name "|    $( iwgetid -r  ) |     $( date +"%F %R" ) |"
+   sleep 1m    # Update time every minute
+done &

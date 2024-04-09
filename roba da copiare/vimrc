@@ -1,0 +1,37 @@
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+let mapleader = 'z'
+
+call plug#begin()
+
+Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'shougo/neocomplcache.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'vimwiki/vimwiki'
+
+call plug#end()
+
+let g:airline_theme='solarized'
+
+"NERDTree
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
+
+syntax on               
+"set termguicolors       
+set t_Co=256 
+
+
+let g:Hexokinase_highlighters = [ 'foreground' ]
+let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names'
+
